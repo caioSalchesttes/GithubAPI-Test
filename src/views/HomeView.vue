@@ -33,14 +33,14 @@
             />
           </div>
           <div class="col-2">
-            <select class="form-control github_select" v-model="data.type" key="type">
+            <select class="form-control github_select" v-model="data.type" id="type">
               <option v-for="lin in data.types" :key="lin.key" :value="lin.key">
                 {{ lin.name }}
               </option>
             </select>
           </div>
           <div class="col-2">
-            <select class="form-control github_select" v-model="data.language" key="language">
+            <select class="form-control github_select" v-model="data.language" id="language">
               <option
                 v-for="lin in data.languages"
                 :key="lin.key"
@@ -51,7 +51,7 @@
             </select>
           </div>
           <div class="col-2">
-            <select class="form-control github_select" v-model="data.sort" key="sort">
+            <select class="form-control github_select" v-model="data.sort" id="sort">
               <option v-for="lin in data.sorts" :key="lin.key" :value="lin.key">
                 {{ lin.name }}
               </option>
@@ -61,7 +61,7 @@
         <div class="row">
           <Repository
             v-for="lin in filterRepo()"
-            :key="lin.key"
+            :key="lin.id"
             :repo="lin"
           ></Repository>
         </div>
