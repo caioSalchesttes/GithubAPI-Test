@@ -75,6 +75,15 @@ import Repository from "@/components/repositoryComp.vue";
 import { reactive, onMounted } from "vue";
 import api from "@/services/api";
 
+type reposItem = {
+  id: number;
+  name: string;
+  language: string;
+  updated_at: string;
+  archived: boolean;
+  stargazers_count: number;
+};
+
 const data = reactive({
   search: "",
   type: "",
@@ -104,7 +113,7 @@ const data = reactive({
     name: "",
     bio: "",
   },
-  repos: [] = [],
+  repos: [] as reposItem[],
 });
 
 onMounted(async () => {
@@ -127,13 +136,13 @@ const filterRepo = () => {
     let query = data.repos;
   
     if (data.search) {
-      return query.filter((repo: any) => {
+      return query.filter((repo) => {
         return repo.name.toLowerCase().includes(data.search.toLowerCase());
       });
     }
 
     if (data.language) {
-      return query.filter((repo: any) => {
+      return query.filter((repo) => {
         return repo.language == data.language;
       });
     }
@@ -141,26 +150,26 @@ const filterRepo = () => {
     if(data.sort){
 
       if(data.sort == "Last updated"){
-        return query.sort((a: any, b: any) => {
+        return query.sort((a, b) => {
           return new Date(b.updated_at) - new Date(a.updated_at);
         });
       }
 
       if(data.sort == "Name"){
-        return query.sort((a: any, b: any) => {
+        return query.sort((a, b) => {
           return a.name.localeCompare(b.name);
         });
       }
 
       if(data.sort == "Stars"){
-        return query.sort((a: any, b: any) => {
+        return query.sort((a, b) => {
           return b.stargazers_count - a.stargazers_count;
         });
       }
     }
 
     if(data.type){
-      return query.filter((repo: any) => {
+      return query.filter((repo) => {
         return repo.archived == true;
       });
     }
