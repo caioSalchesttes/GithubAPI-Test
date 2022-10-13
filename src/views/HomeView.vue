@@ -61,7 +61,7 @@
         <div class="row">
           <Repository
             v-for="lin in filterRepo()"
-            :key="lin.id"
+            :key="lin?.id"
             :repo="lin"
           ></Repository>
         </div>
@@ -99,6 +99,7 @@ const data = reactive({
     { key: "Stars", name: "Stars" },
   ],
   profile: {
+    id: "",
     avatar_url: "",
     name: "",
     bio: "",
