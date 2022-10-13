@@ -151,7 +151,9 @@ const filterRepo = () => {
 
       if(data.sort == "Last updated"){
         return query.sort((a, b) => {
-          return new Date(b.updated_at) - new Date(a.updated_at);
+          let dateA : any = new Date(a.updated_at);
+          let dateB : any = new Date(b.updated_at);
+          return dateB - dateA;
         });
       }
 
