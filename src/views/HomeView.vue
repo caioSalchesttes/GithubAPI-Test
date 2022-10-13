@@ -71,7 +71,7 @@
 </template>
 
 <script setup lang="ts">
-import Repository from "@/components/repository.vue";
+import Repository from "@/components/repositoryComp.vue";
 import { reactive, onMounted } from "vue";
 import api from "@/services/api";
 
@@ -98,7 +98,11 @@ const data = reactive({
     { key: "Name", name: "Name" },
     { key: "Stars", name: "Stars" },
   ],
-  profile: {},
+  profile: {
+    avatar_url: "",
+    name: "",
+    bio: "",
+  },
   repos: [],
 });
 

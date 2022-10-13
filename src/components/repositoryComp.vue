@@ -51,7 +51,6 @@
 
 <script setup lang="ts">
 import { defineProps } from "vue";
-import axios from "axios";
 
 const props = defineProps<{
   repo: any;
