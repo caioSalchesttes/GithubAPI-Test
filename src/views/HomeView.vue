@@ -127,13 +127,13 @@ const filterRepo = () => {
     let query = data.repos;
   
     if (data.search) {
-      return query.filter((repo) => {
+      return query.filter((repo: any) => {
         return repo.name.toLowerCase().includes(data.search.toLowerCase());
       });
     }
 
     if (data.language) {
-      return query.filter((repo) => {
+      return query.filter((repo: any) => {
         return repo.language == data.language;
       });
     }
@@ -141,26 +141,26 @@ const filterRepo = () => {
     if(data.sort){
 
       if(data.sort == "Last updated"){
-        return query.sort((a, b) => {
+        return query.sort((a: any, b: any) => {
           return new Date(b.updated_at) - new Date(a.updated_at);
         });
       }
 
       if(data.sort == "Name"){
-        return query.sort((a, b) => {
+        return query.sort((a: any, b: any) => {
           return a.name.localeCompare(b.name);
         });
       }
 
       if(data.sort == "Stars"){
-        return query.sort((a, b) => {
+        return query.sort((a: any, b: any) => {
           return b.stargazers_count - a.stargazers_count;
         });
       }
     }
 
     if(data.type){
-      return query.filter((repo) => {
+      return query.filter((repo: any) => {
         return repo.archived == true;
       });
     }
