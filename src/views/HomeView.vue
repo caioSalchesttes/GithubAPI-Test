@@ -104,7 +104,7 @@ const data = reactive({
     name: "",
     bio: "",
   },
-  repos: [],
+  repos: [] = [],
 });
 
 onMounted(async () => {
